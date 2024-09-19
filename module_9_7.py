@@ -3,12 +3,18 @@
 # и "Составное" в противном случае
 def is_prime(func):
     def wrapper(*args):
+
         result_dec = func(*args)
-        if result_dec % 2:
-            print('Простое')
-        else:
-            print('Составное')
-        return result_dec
+        if result_dec < 2:
+            print("Составное")
+            return result
+
+        for i in range(2, int(result_dec ** 0.5) + 1):
+            if result_dec % i == 0:
+                print("Составное")
+                return result
+            print("Простое")
+            return result_dec
 
     return wrapper
 
